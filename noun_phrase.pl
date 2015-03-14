@@ -45,12 +45,12 @@ noun_phrase_p([X],obj,P1,P2)	:- object_pronoun(P1,P2,X).
 
 % a "normal" noun phrase (with a main noun)
 % - creates
-noun_phrase_n(X,P2,K)		:- stuffl(X) -> is_noun(N), noun_sp(N, P2, N2), noun_kinds(N,K), noun_phrase_(N,N2,P2,Y), append(Y,[N2],X).
+noun_phrase_n(X,P2,K)		:- stuffl(X) -> noun_sp(N, P2, N2), noun_kinds(N,K), noun_phrase_(N,N2,P2,Y), append(Y,[N2],X).
 % - checks:
-noun_phrase_n(X,P2,K)		:- is_list(X)-> append(Y,[N2],X), is_noun(N), noun_sp(N, P2, N2), noun_kinds(N,K), noun_phrase_(N,N2,P2,Y).
+noun_phrase_n(X,P2,K)		:- is_list(X)-> append(Y,[N2],X), noun_sp(N, P2, N2), noun_kinds(N,K), noun_phrase_(N,N2,P2,Y).
 
 % Single noun
-noun_phrase_(_,_,_,[])		:- true.
+noun_phrase_(_,_,_,[]).
 
 % Determiner:
 noun_phrase_(_,N2,P2,[D])	:- det_an(D, P2, N2).

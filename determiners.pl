@@ -12,11 +12,11 @@
  * X	=> determiner;
  * P2	=> count (s/p).
 */
-determiner(X,P2)	:- 	demonstrative(X,P2).
+determiner(X,P2)	:-	demonstrative(X,P2).
 determiner('the',_)	:-	true.
-%determiner('a',_)	:-	true.
-%determiner('an',_)	:-	true.
-determiner(X,_)		:- 	possessive_adjective(X).
+determiner('a',_)	:-	true.
+determiner('an',_)	:-	true.
+determiner(X,_)		:-	possessive_adjective(X).
 
 % TODO: implement possessive nouns as determiners.
 

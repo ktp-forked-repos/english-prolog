@@ -16,7 +16,7 @@ en_clause(X) :- is_list(X)->
 en_clause_chk(X) :- append(['it'],VP,X),VP\=[], verb_phrase_object(VP,3,s,[thing]).
 
 
-en_clause_chk(X) :- append(N,VP,X),noun_phrase(N,subj,P1,P2,K),N\=[],VP\=[], dbg('N:K:VP',N:K:VP),
+en_clause_chk(X) :- append(N,VP,X), N\=[],VP\=[], noun_phrase(N,subj,P1,P2,K), dbg('N:K:VP',N:K:VP),
 		    ignore_gender(P1,P2,P1_,P2_), verb_phrase_object(VP,P1_,P2_,K).
 
 
