@@ -17,11 +17,11 @@ verb_object(V,O,NT)	:- is_list(O), verb_pattern(V,L), dbg('L:NT',L:NT), once(pat
 
 
 pattern(_, _, [], [])	:- true, !.
-pattern(V,NT, [P], Y)	:- dbg('[P]',[P]), pattern(V,NT,P,Y).
+pattern(V,NT, [P], Y)	:- pattern(V,NT,P,Y).
 pattern(_, NT,[P|R],Y)	:- stuffl(Y) -> (dbg('[P|R]',[P|R]), pattern(V,NT,P,Y1),pattern(V,NT,R,Y2), append(Y1, Y2, Y)).
 pattern(_, NT,[P|R],Y)	:- is_list(Y)-> (R\=[], dbg('[P|R]',[P|R]), append(Y1, Y2, Y),Y1\=[],Y2\=[],pattern(V,NT,P,Y1),pattern(V,NT,R,Y2)).
-pattern(_,NT, n:subj,Y) :- dbg('NT:U:Y',NT:subj:Y),noun_phrase:noun_phrase(Y,subj:nmod, 3,_,NT).
-pattern(_,NT, n:obj, Y) :- dbg('NT:U:Y',NT:obj:Y), noun_phrase:noun_phrase(Y,obj, 3,_,NT).
+pattern(_,NT, n:subj,Y) :- noun_phrase:noun_phrase(Y,subj:nmod, 3,_,NT).
+pattern(_,NT, n:obj, Y) :- noun_phrase:noun_phrase(Y,obj, 3,_,NT).
 pattern(_,NT, a, Y)	:- dbg('NT:Y',NT:Y),adjective_phrase:adjective_phrase(Y,NT).
 pattern(_,_,p:P,[P])	:- is_preposition(P).
 
