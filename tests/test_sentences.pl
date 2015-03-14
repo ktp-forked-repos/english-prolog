@@ -17,6 +17,9 @@ test :- test_list([
 'I is a teacher':fail,
 'I am a great teacher.',
 'You are a great teacher.',
-'You is a great teacher.':fail
+'You is a great teacher.':fail,
+'The better teacher is good.',
+'The better is good.':fail,
+'A better teacher would be good.'
 
 ],S,sentence:make_sentences(S)).
